@@ -2,14 +2,14 @@
 #include "Auctionator.h"
 #include "ObjectMgr.h"
 #include <random>
-
+#include "QueryResult.h"
 
 AuctionatorBidder::AuctionatorBidder(uint32 auctionHouseIdParam, ObjectGuid buyer, AuctionatorConfig* auctionatorConfig)
 {
     SetLogPrefix("[AuctionatorBidder] ");
     auctionHouseId = auctionHouseIdParam;
     buyerGuid = buyer;
-    ahMgr = sAuctionMgr->GetAuctionsMapByHouseId(auctionHouseId);
+    ahMgr = sAuctionMgr->GetAuctionsMapByHouseId((AuctionHouseId)auctionHouseId);
     config = auctionatorConfig;
     bidOnOwn = config->bidOnOwn;
 }
@@ -237,13 +237,13 @@ bool AuctionatorBidder::BuyoutAuction(AuctionEntry* auction, ItemTemplate const*
 uint32 AuctionatorBidder::GetAuctionsPerCycle()
 {
     switch(auctionHouseId) {
-        case AUCTIONHOUSE_ALLIANCE:
+        case (uint32)AuctionHouseId::Alliance:
             return config->allianceBidder.maxPerCycle;
             break;
-        case AUCTIONHOUSE_HORDE:
+        case (uint32)AuctionHouseId::Horde:
             return config->hordeBidder.maxPerCycle;
             break;
-        case AUCTIONHOUSE_NEUTRAL:
+        case (uint32)AuctionHouseId::Neutral:
             return config->neutralBidder.maxPerCycle;
             break;
         default:
