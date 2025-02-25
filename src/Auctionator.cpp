@@ -283,7 +283,7 @@ void Auctionator::Update()
 /*
     if (config->allianceSeller.enabled) {
         AuctionatorSeller sellerAlliance =
-            AuctionatorSeller(gAuctionator, static_cast<uint32>(AUCTIONHOUSE_ALLIANCE));
+            AuctionatorSeller(gAuctionator, static_cast<uint32>(AuctionHouseId::Alliance));
 
         uint32 auctionCountAlliance = AllianceAh->Getcount();
 
@@ -294,7 +294,7 @@ void Auctionator::Update()
                 + " of " + std::to_string(config->allianceSeller.maxAuctions)
             );
 
-            sellerAlliance.LetsGetToIt(100, AUCTIONHOUSE_ALLIANCE);
+            sellerAlliance.LetsGetToIt(100, AuctionHouseId::Alliance);
         } else {
             logInfo("Alliance count over max: " + std::to_string(auctionCountAlliance));
         }
@@ -304,7 +304,7 @@ void Auctionator::Update()
 
     if (config->hordeSeller.enabled) {
         AuctionatorSeller sellerHorde =
-            AuctionatorSeller(gAuctionator, static_cast<uint32>(AUCTIONHOUSE_HORDE));
+            AuctionatorSeller(gAuctionator, static_cast<uint32>(AuctionHouseId::Horde));
 
         uint32 auctionCountHorde = HordeAh->Getcount();
 
@@ -315,7 +315,7 @@ void Auctionator::Update()
                 + " of " + std::to_string(config->hordeSeller.maxAuctions)
             );
 
-            sellerHorde.LetsGetToIt(100, AUCTIONHOUSE_HORDE);
+            sellerHorde.LetsGetToIt(100, AuctionHouseId::Horde);
         } else {
             logInfo("Horde count over max: " + std::to_string(auctionCountHorde));
         }
@@ -325,7 +325,7 @@ void Auctionator::Update()
 
     if (config->neutralSeller.enabled) {
         AuctionatorSeller sellerNeutral =
-            AuctionatorSeller(gAuctionator, static_cast<uint32>(AUCTIONHOUSE_NEUTRAL));
+            AuctionatorSeller(gAuctionator, static_cast<uint32>(AuctionHouseId::Neutral));
 
         uint32 auctionCountNeutral = NeutralAh->Getcount();
 
@@ -336,7 +336,7 @@ void Auctionator::Update()
                 + " of " + std::to_string(config->neutralSeller.maxAuctions)
             );
 
-            sellerNeutral.LetsGetToIt(100, AUCTIONHOUSE_NEUTRAL);
+            sellerNeutral.LetsGetToIt(100, AuctionHouseId::Neutral);
         } else {
             logInfo("Neutral count over max: " + std::to_string(auctionCountNeutral));
         }
